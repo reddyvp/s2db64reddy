@@ -2,11 +2,11 @@
 
 block content
   h1= title
-  - let costumes = [{costume_type:"Gamer Costumes", costume_name:"8-Ball", units: 15},{costume_type:"Superhero Costumes", costume_name:"Superman", units: 10},{costume_type:"Disney Costumes", costume_name:"Minnie Mouse", units: 5}]
+  - let results = [{name:"Aishwarya", age:25, height: 153},{name:"Hari", age:24, height: 160},{name:"Sai", age:"24", height: 152}]
   div(class="container-fluid") 
   div(class="row")
-    each costume,index in costumes
-        div(class="col-sm-2" onclick=`buy(${index})`) costume_type: #{costume.costume_type} , costume_name: #{costume.costume_name} , units: #{costume.units} 
+    each friend,index in friends
+        div(class="col-sm-2" onclick=`buy(${index})`) name: #{friend.name} , age: #{friend.age} , units: #{friend.height} 
 
   script. 
    let itemNo=0
