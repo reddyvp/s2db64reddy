@@ -6,11 +6,6 @@ block content
   div(class="container-fluid") 
   div(class="row")
     each friend,index in results
-        div(class="col-sm-2" onclick=`buy(${index})`) name: #{friend.name} , age: #{friend.age} , units: #{friend.height} 
+        div(class="col-sm-2") name: #{friend.name} , age: #{friend.age} , units: #{friend.height} 
 
-  script. 
-   let itemNo=0
-      function buy(itemNo)
-      {
-          alert(`You purchased Item ${itemNo+1}`)
-      }
+  
