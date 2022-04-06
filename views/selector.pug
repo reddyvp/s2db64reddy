@@ -2,4 +2,8 @@
 
 block content
   h1= title
-  
+  - let image_names=["Screenshot (123).png","Screenshot (126).png","Screenshot (127).png","Screenshot (128).png","Screenshot (129).png"]
+  - for(let i=0;i<3;i++) {
+     - let random= Math.floor(Math.random()*5)
+     img(src=`/images/${image_names[random]}` alt=`Image No ${random}` height="300px" width="300px")
+  - }
