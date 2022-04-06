@@ -2,13 +2,13 @@ extends layout
 
 block content
   h1= title
-  p Welcome!! #{title}
-  button(type="button", class="btn btn-primary btn-lg") Press me
+   p Welcome!! #{title}
+   button(type="button", class="btn btn-primary btn-lg") Press me
    p 
   div(id="target") Clap for me 
   script. 
-    var clap_count=0;
-    function moreClaps(){
-      clap_count+=1;
-      document.getElementById("target").innerHTML="Value is "+clap_count  ;
-    }
+   var clap_count=0;
+   function moreClaps(){
+   clap_count+=1;
+   document.getElementById("target").innerHTML="Value is "+clap_count;
+   }
