@@ -1,0 +1,46 @@
+extends layout
+
+block content
+  h1= title
+  if(toShow == null)
+    h2 No instance found for updating 
+  else
+    - let fid = toShow._id
+    - let fname = toShow.name
+    - let age = toShow.age
+    - let height = toShow.height
+    
+    div.row(class='mb-2')
+      div.mr-1 ID is
+      div #{fid}
+    - let actionid = "/resource/friend/" + fid
+    form(id='FForm', action= actionid, method="PUT")
+      div.form-group
+          label.costumeAttr(for='fname') Friend Name
+          input#fishname(type='text', name='fishname', value= fname )
+      div.form-group
+          label.costumeAttr(for='age') Friend Age
+          input#classi(type='number', name='age', value= age )
+      div.form-group
+          label.costumeAttr(for='height') Friend Height
+          input#habitat(type='number', name='height', value= height )
+      input(type="submit")
+
+    script.
+      document.forms['FForm'].addEventListener('submit', (event) => {
+        event.preventDefault();
+        console.log(event.target)
+        // TODO do something here to show user that form is being submitted
+        fetch(event.target.action, {
+          method: 'PUT',
+          body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+        }).then((resp) => {
+          return resp.json(); // or resp.text() or whatever the server sends
+        }).then((body) => {
+          alert("Update succeded")
+          // TODO handle body
+        }).catch((error) => {
+          // TODO handle error
+          alert("Update failed " + error )
+        });
+      });

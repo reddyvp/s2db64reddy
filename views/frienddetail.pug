@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  h1= title
+  if(toShow == null)
+    h2 No instance to show details
+  else
+    - let fid = toShow._id
+    - let name = toShow.name
+    - let age = toShow.age
+    - let height = toShow.height
+    div
+      div.row
+        div(class='costumeAttr mr-3') Friend ID is:
+        div(class='values spcl') #{fid}
+      div.row
+        div(class='costumeAttr mr-3') Friend Name is:
+        div(class="values") #{name}
+      div.row
+        div(class='costumeAttr mr-3') Friend age is:
+        div(class="values") #{age}
+      div.row
+        div(class='costumeAttr mr-3') Friend heighgt is:
+        div(class="values") #{height}

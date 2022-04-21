@@ -1,0 +1,36 @@
+extends layout
+
+block content
+  h1= title
+
+  form(id='FriendForm', action="/resource/friend", method="POST")
+    div.form-group
+        label.costumeAttr(for='name') Friend Name
+        input#costumetype(type='text', name='name',class='form-control')
+    div.form-group
+        label.costumeAttr(for='age') Friend Age
+        input#size(type='number', name='age',class='form-control')
+    div.form-group
+        label.costumeAttr(for='height') Friend Height
+        input#cost(type='number', name='height',class='form-control')
+    input(type="submit", class="btn btn-primary btn-lg")
+    
+
+  script.
+    document.forms['FriendForm'].addEventListener('submit', (event) => {
+      event.preventDefault();
+      // TODO do something here to show user that form is being submitted
+      fetch(event.target.action, {
+        method: 'POST',
+        body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+      }).then((resp) => {
+        return resp.json(); // or resp.text() or whatever the server sends
+      }).then((body) => {
+        alert("Save succeded")
+      }).catch((error) => {
+        // TODO handle error
+        //- document.getElementById("errors").style.display="block"
+        //- document.getElementById("errors").innerHTML="hello";
+        alert("Save failed " + error)
+      });
+    });
